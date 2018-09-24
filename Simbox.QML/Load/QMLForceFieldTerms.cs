@@ -14,6 +14,9 @@ using Nano.Science.Simulation;
 
 namespace Simbox.QML.Load
 {
+    /// <summary>
+    /// Represents the QML forcefield terms for a given <see cref="Residue"/>. 
+    /// </summary>
     [XmlName("QMLForceField")]
     class QMLForceFieldTerms : IForceFieldTerms, IInstantiatedForceFieldTerms
     {

@@ -11,41 +11,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="QMLForceField.cs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="QMLForceField.cs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/QMLForceField.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+            <state relative-caret-position="390">
+              <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
               <folding>
-                <marker date="1537803057104" expanded="false" signature="6:204" ph="..." />
-                <marker date="1537803057104" expanded="true" signature="226:813" ph="{...}" />
-                <marker date="1537803057104" expanded="true" signature="233:362" ph="/// A forcefield interface to the QML package. ... " />
-                <marker date="1537803057104" expanded="true" signature="407:811" ph="{...}" />
-                <marker date="1537803057104" expanded="true" signature="494:527" ph="{...}" />
-                <marker date="1537803057104" expanded="true" signature="621:716" ph="{...}" />
-                <marker date="1537803057104" expanded="true" signature="747:805" ph="{...}" />
+                <marker date="1537803909337" expanded="false" signature="6:204" ph="..." />
+                <marker date="1537803909337" expanded="true" signature="226:867" ph="{...}" />
+                <marker date="1537803909337" expanded="true" signature="233:316" ph="/// A forcefield interface to the QML package. ... " />
+                <marker date="1537803909337" expanded="true" signature="361:865" ph="{...}" />
+                <marker date="1537803909337" expanded="true" signature="502:535" ph="{...}" />
+                <marker date="1537803909337" expanded="true" signature="648:743" ph="{...}" />
+                <marker date="1537803909337" expanded="true" signature="801:859" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QMLForceFieldTerms.cs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="QMLForceFieldTerms.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Load/QMLForceFieldTerms.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+            <state relative-caret-position="225">
+              <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
               <folding>
-                <marker date="1537803532288" expanded="true" signature="6:362" ph="..." />
-                <marker date="1537803532288" expanded="true" signature="389:2664" ph="{...}" />
-                <marker date="1537803532288" expanded="true" signature="500:2662" ph="{...}" />
-                <marker date="1537803532288" expanded="true" signature="515:866" ph="/// Add this forcefield to the instantiated topology.  ... " />
-                <marker date="1537803532288" expanded="true" signature="981:1125" ph="{...}" />
-                <marker date="1537803532288" expanded="true" signature="1135:1351" ph="/// Loads this forcefield from XML file. ... " />
-                <marker date="1537803532288" expanded="true" signature="1411:1489" ph="{...}" />
-                <marker date="1537803532288" expanded="true" signature="1499:1747" ph="/// Saves this forcefield to an XML node. ... " />
-                <marker date="1537803532288" expanded="true" signature="1819:1918" ph="{...}" />
-                <marker date="1537803532288" expanded="true" signature="1928:2289" ph="/// Generates the forcefield, given the topology. ... " />
-                <marker date="1537803532288" expanded="true" signature="2421:2656" ph="{...}" />
+                <marker date="1537803855871" expanded="true" signature="6:362" ph="..." />
+                <marker date="1537803855871" expanded="true" signature="389:2781" ph="{...}" />
+                <marker date="1537803855871" expanded="true" signature="396:508" ph="/// Represents the QML forcefield terms for a given &lt;see cref=&quot;Residue&quot;/&gt;.  ... " />
+                <marker date="1537803855871" expanded="true" signature="617:2779" ph="{...}" />
+                <marker date="1537803855871" expanded="true" signature="632:983" ph="/// Add this forcefield to the instantiated topology.  ... " />
+                <marker date="1537803855871" expanded="true" signature="1098:1242" ph="{...}" />
+                <marker date="1537803855871" expanded="true" signature="1252:1468" ph="/// Loads this forcefield from XML file. ... " />
+                <marker date="1537803855871" expanded="true" signature="1528:1606" ph="{...}" />
+                <marker date="1537803855871" expanded="true" signature="1616:1864" ph="/// Saves this forcefield to an XML node. ... " />
+                <marker date="1537803855871" expanded="true" signature="1936:2035" ph="{...}" />
+                <marker date="1537803855871" expanded="true" signature="2045:2406" ph="/// Generates the forcefield, given the topology. ... " />
+                <marker date="1537803855871" expanded="true" signature="2538:2773" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -82,10 +83,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Load/QMLInstantiatedForceFieldTerms.cs" />
-        <option value="$PROJECT_DIR$/QMLForceField.cs" />
         <option value="$PROJECT_DIR$/PluginManifest.xml" />
         <option value="$PROJECT_DIR$/Simbox.QML.csproj" />
         <option value="$PROJECT_DIR$/Load/QMLForceFieldTerms.cs" />
+        <option value="$PROJECT_DIR$/QMLForceField.cs" />
       </list>
     </option>
   </component>
@@ -165,9 +166,9 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="NuGet" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25397456" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25397456" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Build" visible="true" weight="0.32942098" />
+      <window_info anchor="bottom" id="Build" visible="true" weight="0.32942098" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -206,38 +207,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QMLForceField.cs">
+    <entry file="file://$PROJECT_DIR$/Load/QMLForceFieldTerms.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+        <state relative-caret-position="225">
+          <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
           <folding>
-            <marker date="1537803057104" expanded="false" signature="6:204" ph="..." />
-            <marker date="1537803057104" expanded="true" signature="226:813" ph="{...}" />
-            <marker date="1537803057104" expanded="true" signature="233:362" ph="/// A forcefield interface to the QML package. ... " />
-            <marker date="1537803057104" expanded="true" signature="407:811" ph="{...}" />
-            <marker date="1537803057104" expanded="true" signature="494:527" ph="{...}" />
-            <marker date="1537803057104" expanded="true" signature="621:716" ph="{...}" />
-            <marker date="1537803057104" expanded="true" signature="747:805" ph="{...}" />
+            <marker date="1537803855871" expanded="true" signature="6:362" ph="..." />
+            <marker date="1537803855871" expanded="true" signature="389:2781" ph="{...}" />
+            <marker date="1537803855871" expanded="true" signature="396:508" ph="/// Represents the QML forcefield terms for a given &lt;see cref=&quot;Residue&quot;/&gt;.  ... " />
+            <marker date="1537803855871" expanded="true" signature="617:2779" ph="{...}" />
+            <marker date="1537803855871" expanded="true" signature="632:983" ph="/// Add this forcefield to the instantiated topology.  ... " />
+            <marker date="1537803855871" expanded="true" signature="1098:1242" ph="{...}" />
+            <marker date="1537803855871" expanded="true" signature="1252:1468" ph="/// Loads this forcefield from XML file. ... " />
+            <marker date="1537803855871" expanded="true" signature="1528:1606" ph="{...}" />
+            <marker date="1537803855871" expanded="true" signature="1616:1864" ph="/// Saves this forcefield to an XML node. ... " />
+            <marker date="1537803855871" expanded="true" signature="1936:2035" ph="{...}" />
+            <marker date="1537803855871" expanded="true" signature="2045:2406" ph="/// Generates the forcefield, given the topology. ... " />
+            <marker date="1537803855871" expanded="true" signature="2538:2773" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Load/QMLForceFieldTerms.cs">
+    <entry file="file://$PROJECT_DIR$/QMLForceField.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+        <state relative-caret-position="390">
+          <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
           <folding>
-            <marker date="1537803532288" expanded="true" signature="6:362" ph="..." />
-            <marker date="1537803532288" expanded="true" signature="389:2664" ph="{...}" />
-            <marker date="1537803532288" expanded="true" signature="500:2662" ph="{...}" />
-            <marker date="1537803532288" expanded="true" signature="515:866" ph="/// Add this forcefield to the instantiated topology.  ... " />
-            <marker date="1537803532288" expanded="true" signature="981:1125" ph="{...}" />
-            <marker date="1537803532288" expanded="true" signature="1135:1351" ph="/// Loads this forcefield from XML file. ... " />
-            <marker date="1537803532288" expanded="true" signature="1411:1489" ph="{...}" />
-            <marker date="1537803532288" expanded="true" signature="1499:1747" ph="/// Saves this forcefield to an XML node. ... " />
-            <marker date="1537803532288" expanded="true" signature="1819:1918" ph="{...}" />
-            <marker date="1537803532288" expanded="true" signature="1928:2289" ph="/// Generates the forcefield, given the topology. ... " />
-            <marker date="1537803532288" expanded="true" signature="2421:2656" ph="{...}" />
+            <marker date="1537803909337" expanded="false" signature="6:204" ph="..." />
+            <marker date="1537803909337" expanded="true" signature="226:867" ph="{...}" />
+            <marker date="1537803909337" expanded="true" signature="233:316" ph="/// A forcefield interface to the QML package. ... " />
+            <marker date="1537803909337" expanded="true" signature="361:865" ph="{...}" />
+            <marker date="1537803909337" expanded="true" signature="502:535" ph="{...}" />
+            <marker date="1537803909337" expanded="true" signature="648:743" ph="{...}" />
+            <marker date="1537803909337" expanded="true" signature="801:859" ph="{...}" />
           </folding>
         </state>
       </provider>
