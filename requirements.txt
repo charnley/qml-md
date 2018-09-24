@@ -1,0 +1,4 @@
+rmsd
+numpy
+scipy
+git+https://github.com/qmlcode/qml@develop
