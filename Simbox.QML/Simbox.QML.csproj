@@ -32,16 +32,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Nano">
-      <HintPath>..\..\..\..\..\..\AppData\Roaming\itch\apps\nsb-research-vr\server\Nano.dll</HintPath>
+      <HintPath>$(AppData)\itch\apps\NSB Research VR\server\Nano.dll</HintPath>
     </Reference>
     <Reference Include="Nano.Science.Simulation">
-      <HintPath>..\..\..\..\..\..\AppData\Roaming\itch\apps\nsb-research-vr\server\Nano.Science.Simulation.dll</HintPath>
+      <HintPath>$(AppData)\itch\apps\NSB Research VR\server\Nano.Science.Simulation.dll</HintPath>
     </Reference>
     <Reference Include="Simbox.MD">
-      <HintPath>..\..\..\..\..\..\AppData\Roaming\itch\apps\nsb-research-vr\server\Simbox.MD.dll</HintPath>
+      <HintPath>$(AppData)\itch\apps\NSB Research VR\server\Simbox.MD.dll</HintPath>
     </Reference>
     <Reference Include="SlimMath">
-      <HintPath>..\..\..\..\..\..\AppData\Roaming\itch\apps\nsb-research-vr\server\SlimMath.dll</HintPath>
+      <HintPath>$(AppData)\itch\apps\NSB Research VR\server\SlimMath.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -58,4 +58,29 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <DebugOutputFiles Include="$(OutputPath)Simbox.QML.dll" />
+    <DebugOutputFiles Include="$(OutputPath)Simbox.QML.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <ReleaseOutputFiles Include="$(OutputPath)Simbox.QML.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <PluginManifest Include="PluginManifest.xml" />
+  </ItemGroup>
+  <Target Name="CopyReleaseToItch" AfterTargets="Build" Condition="'$(Configuration)'=='Release'">
+    <Copy SourceFiles="@(ReleaseOutputFiles)" DestinationFiles="$(AppData)\itch\apps\NSB Research VR\server\Plugins\Simbox.QML\Managed\%(RecursiveDir)%(Filename)%(Extension)">
+      <Output TaskParameter="CopiedFiles" ItemName="Changed" />
+    </Copy>
+  </Target>
+  <Target Name="CopyDebugToItch" AfterTargets="Build" Condition="'$(Configuration)'=='Debug'">
+    <Copy SourceFiles="@(DebugOutputFiles)" DestinationFiles="$(AppData)\itch\apps\NSB Research VR\server\Plugins\Simbox.QML\Managed\%(RecursiveDir)%(Filename)%(Extension)">
+      <Output TaskParameter="CopiedFiles" ItemName="Changed" />
+    </Copy>
+  </Target>
+  <Target Name="CopyManifestToItch" AfterTargets="Build">
+    <Copy SourceFiles="@(PluginManifest)" DestinationFolder="$(AppData)\itch\apps\NSB Research VR\server\Plugins\Simbox.QML\">
+      <Output TaskParameter="CopiedFiles" ItemName="Changed" />
+    </Copy>
+  </Target>  
 </Project>

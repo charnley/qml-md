@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Plugin Name="QMLForceField" APIVersion="1.1.*">
+    <LoadableAssemblies>
+        <Assembly Name="Simbox.QML.dll"/>
+    </LoadableAssemblies>
+</Plugin>
