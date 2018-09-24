@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Nano">
@@ -36,6 +38,9 @@
     </Reference>
     <Reference Include="Nano.Science.Simulation">
       <HintPath>$(AppData)\itch\apps\NSB Research VR\server\Nano.Science.Simulation.dll</HintPath>
+    </Reference>
+    <Reference Include="Python.Runtime, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\..\..\..\Anaconda3\pkgs\pythonnet-2.3.0-py35_0\Lib\site-packages\Python.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Simbox.MD">
       <HintPath>$(AppData)\itch\apps\NSB Research VR\server\Simbox.MD.dll</HintPath>
@@ -60,10 +65,15 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <DebugOutputFiles Include="$(OutputPath)Simbox.QML.dll" />
+    <DebugOutputFiles Include="$(OutputPath)Python.Runtime.dll" />
     <DebugOutputFiles Include="$(OutputPath)Simbox.QML.pdb" />
   </ItemGroup>
   <ItemGroup>
+    <ReleaseOutputFiles Include="$(OutputPath)Python.Runtime.dll" />
     <ReleaseOutputFiles Include="$(OutputPath)Simbox.QML.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <QMLFiles Include="..\qml_md\**\*.*" />
   </ItemGroup>
   <ItemGroup>
     <PluginManifest Include="PluginManifest.xml" />
@@ -78,9 +88,14 @@
       <Output TaskParameter="CopiedFiles" ItemName="Changed" />
     </Copy>
   </Target>
+  <Target Name="CopyQMLMDToItch" AfterTargets="Build">
+    <Copy SourceFiles="@(QMLFiles)" DestinationFiles="$(AppData)\itch\apps\NSB Research VR\server\Plugins\Simbox.QML\qml_md\%(RecursiveDir)%(Filename)%(Extension)">
+      <Output TaskParameter="CopiedFiles" ItemName="Changed" />
+    </Copy>
+  </Target>
   <Target Name="CopyManifestToItch" AfterTargets="Build">
     <Copy SourceFiles="@(PluginManifest)" DestinationFolder="$(AppData)\itch\apps\NSB Research VR\server\Plugins\Simbox.QML\">
       <Output TaskParameter="CopiedFiles" ItemName="Changed" />
     </Copy>
-  </Target>  
+  </Target>
 </Project>

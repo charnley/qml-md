@@ -20,6 +20,9 @@ namespace Simbox.QML.Load
     [XmlName("QMLForceField")]
     class QMLForceFieldTerms : IForceFieldTerms, IInstantiatedForceFieldTerms
     {
+        private string pythonHome;
+        
+
         /// <summary>
         /// Add this forcefield to the instantiated topology. 
         /// </summary>
@@ -40,6 +43,8 @@ namespace Simbox.QML.Load
         public void Load(LoadContext context, XmlNode node)
         {
             //TODO add representations & configurations. 
+            //grab a python path, so we can specify environments.
+            pythonHome = Helper.ResolvePath(Helper.GetAttributeValue(node, "PythonHome", ""));
         }
 
         /// <summary>
@@ -51,6 +56,7 @@ namespace Simbox.QML.Load
         public XmlElement Save(LoadContext context, XmlElement element)
         {
             //TODO save any necessary information.
+            Helper.AppendAttributeAndValue(element, "PythonHome", pythonHome);
             return element;
         }
 
@@ -64,7 +70,11 @@ namespace Simbox.QML.Load
         public IForceField GenerateForceField(InstantiatedTopology parentTopology, SystemProperties properties, IReporter reporter)
         {
             //TODO do any extra stuff thats needed.
-            var forcefield = new QMLForceField();
+            var forcefield = new QMLForceField()
+            {
+                PythonHome = pythonHome,
+                Reporter = reporter
+            };
             reporter.PrintEmphasized("Successfully initialised QML forcefield.");
             return forcefield;
         }
