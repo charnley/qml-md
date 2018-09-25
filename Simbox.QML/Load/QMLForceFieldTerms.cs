@@ -70,11 +70,7 @@ namespace Simbox.QML.Load
         public IForceField GenerateForceField(InstantiatedTopology parentTopology, SystemProperties properties, IReporter reporter)
         {
             //TODO do any extra stuff thats needed.
-            var forcefield = new QMLForceField()
-            {
-                PythonHome = pythonHome,
-                Reporter = reporter
-            };
+            var forcefield = new QMLForceField(pythonHome, reporter);
             reporter.PrintEmphasized("Successfully initialised QML forcefield.");
             return forcefield;
         }

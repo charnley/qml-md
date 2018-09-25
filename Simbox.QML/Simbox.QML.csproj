@@ -33,18 +33,17 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition="'$(OS)' == 'Windows_NT'">
-    <SimboxEnginePath>
-      $(AppData)\itch\apps\NSB Research VR\server
-    </SimboxEnginePath>
+    <SimboxEnginePath>$(AppData)\itch\apps\NSB Research VR\server\</SimboxEnginePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(OS)' != 'Windows_NT'">
-    <SimboxEnginePath>
-      ..\..\..\simbox-engine\bin\release
-    </SimboxEnginePath>
+    <SimboxEnginePath>..\..\..\simbox-engine\bin\release\</SimboxEnginePath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Nano" Condition="'$(OS)' == 'Windows_NT'">
       <HintPath>$(AppData)\itch\apps\NSB Research VR\server\Nano.dll</HintPath>
+    </Reference>
+    <Reference Include="Nano" Condition="'$(OS)' != 'Windows_NT'">
+      <HintPath>..\..\..\simbox-engine\bin\release\Nano.dll</HintPath>
     </Reference>
     <Reference Include="Nano.Science.Simulation" Condition="'$(OS)' == 'Windows_NT'">
       <HintPath>$(AppData)\itch\apps\NSB Research VR\server\Nano.Science.Simulation.dll</HintPath>
@@ -58,9 +57,7 @@
     <Reference Include="SlimMath" Condition="'$(OS)' == 'Windows_NT'">
       <HintPath>$(AppData)\itch\apps\NSB Research VR\server\SlimMath.dll</HintPath>
     </Reference>
-    <Reference Include="Nano" Condition="'$(OS)' != 'Windows_NT'">
-      <HintPath>..\..\..\simbox-engine\bin\release\Nano.dll</HintPath>
-    </Reference>
+
     <Reference Include="Nano.Science.Simulation" Condition="'$(OS)' != 'Windows_NT'">
       <HintPath>..\..\..\simbox-engine\bin\release\Nano.Science.Simulation.dll</HintPath>
     </Reference>
@@ -115,12 +112,12 @@
     <PluginManifest Include="PluginManifest.xml" />
   </ItemGroup>
   <Target Name="CopyReleaseToItch" AfterTargets="Build" Condition="'$(Configuration)'=='Release'">
-    <Copy SourceFiles="@(ReleaseOutputFiles)" DestinationFiles="$(SimboxEnginePath)\Plugins\Simbox.QML\Managed\%(RecursiveDir)%(Filename)%(Extension)">
+    <Copy SourceFiles="@(ReleaseOutputFiles)" DestinationFiles="$(SimboxEnginePath)Plugins\Simbox.QML\Managed\%(RecursiveDir)%(Filename)%(Extension)">
       <Output TaskParameter="CopiedFiles" ItemName="Changed" />
     </Copy>
   </Target>
   <Target Name="CopyDebugToItch" AfterTargets="Build" Condition="'$(Configuration)'=='Debug'">
-    <Copy SourceFiles="@(DebugOutputFiles)" DestinationFiles="$(SimboxEnginePath)\Plugins\Simbox.QML\Managed\%(RecursiveDir)%(Filename)%(Extension)">
+    <Copy SourceFiles="@(DebugOutputFiles)" DestinationFiles="$(SimboxEnginePath)Plugins\Simbox.QML\Managed\%(RecursiveDir)%(Filename)%(Extension)">
       <Output TaskParameter="CopiedFiles" ItemName="Changed" />
     </Copy>
   </Target>

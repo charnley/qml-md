@@ -6,7 +6,7 @@ namespace Simbox.QML.Test
     {
         static void Main(string[] args)
         {
-            var forcefield = new QMLForceField("/home/mike/anaconda3");
+            var forcefield = new QMLForceField(@"C:\Users\Mike.DESKTOP-CA70LTI\Anaconda3\envs\net");
         }
     }
 }

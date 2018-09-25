@@ -29,15 +29,20 @@ namespace Simbox.QML
         public string Name => "QML Force Field";
 
         public IReporter Reporter;
+
+        private dynamic QmlPredict;
+        
         /// <inheritdoc />
-        public QMLForceField(string pythonHome = "")
+        public QMLForceField(string pythonHome = "", IReporter reporter = null)
         {
+            this.Reporter = reporter;
             PythonHome = pythonHome;
-            dynamic module;
-            using (Py.GIL())
-            {
-                module = Py.Import("numpy");
-            }
+            
+            LoadPyConfiguration();
+
+            ImportQML();
+            
+            reporter?.PrintEmphasized("Successfully initialized QML Forcefield.");
         }
 
         /// <inheritdoc />
@@ -55,17 +60,34 @@ namespace Simbox.QML
 
         private void LoadPyConfiguration()
         {
-            Reporter?.PrintDetail($"Python Home: {PythonHome} ");
-            //set up the python variables.
-            Environment.SetEnvironmentVariable("PATH", $@"{PythonHome};" + Environment.GetEnvironmentVariable("PATH"));
-            Environment.SetEnvironmentVariable("PYTHONHOME", PythonHome);
+            if (PythonHome != string.Empty)
+            {
+                Reporter?.PrintDetail($"Python Home: {PythonHome} ");
+                //set up the python variables.
+                Environment.SetEnvironmentVariable("PATH", $@"{PythonHome};" + Environment.GetEnvironmentVariable("PATH"));
+                Environment.SetEnvironmentVariable("PYTHONHOME", PythonHome);
+                PythonEngine.PythonHome = PythonHome;
+            }
+            else
+            {
+                Reporter?.PrintDetail("Python home not set, assuming python with pythonnet is configured.");
+            }
+
+
+        }
+
+        private void ImportQML()
+        {
             //specify the path to the qml_md python scripts.
-            var applicationDir = Helper.ResolvePath("~/Plugins/QMLForceField/qml_md");
-            var pythonlibPath =  $@"{PythonHome}/DLLs;{PythonHome}/Lib;{PythonHome}/Lib/site-packages;{applicationDir}";
-            Reporter?.PrintDetail($"Python Path: {pythonlibPath} ");
-            Environment.SetEnvironmentVariable("PYTHONPATH ", pythonlibPath);
-            PythonEngine.PythonHome = PythonHome;
-            PythonEngine.PythonPath = pythonlibPath;
+            var qmlDir = Helper.ResolvePath("~/Plugins/Simbox.QML/qml_md");
+            using(Py.GIL())
+            {
+                dynamic sys = Py.Import("sys");
+                sys.path.append(qmlDir);
+                QmlPredict = Py.Import("predict");
+            }
+
+            
         }
     }
 }

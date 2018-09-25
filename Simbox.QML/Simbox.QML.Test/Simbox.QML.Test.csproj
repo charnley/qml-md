@@ -14,7 +14,7 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,7 +40,20 @@
       <Project>{a69e993b-c9ac-4fc3-ad01-8fad77688190}</Project>
       <Name>Simbox.QML</Name>
     </ProjectReference>
+    <Reference Include="Nano" Condition="'$(OS)' == 'Windows_NT'">
+      <HintPath>$(AppData)\itch\apps\NSB Research VR\server\Nano.dll</HintPath>
+    </Reference>
+    <Reference Include="Nano" Condition="'$(OS)' != 'Windows_NT'">
+      <HintPath>..\..\..\simbox-engine\bin\release\Nano.dll</HintPath>
+    </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <QMLFiles Include="..\..\qml_md\**\*.*" />
+  </ItemGroup>
+  <Target Name="CopyQMLToOutput" AfterTargets="BeforeBuild">
+    <Copy SourceFiles="@(QMLFiles)" DestinationFiles="$(OutputDir)\Plugins\Simbox.QML\qml_md\%(RecursiveDir)%(Filename)%(Extension)">
+    </Copy>
+  </Target>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
