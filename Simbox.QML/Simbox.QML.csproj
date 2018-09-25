@@ -32,21 +32,46 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(OS)' == 'Windows_NT'">
+    <SimboxEnginePath>
+      $(AppData)\itch\apps\NSB Research VR\server
+    </SimboxEnginePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(OS)' != 'Windows_NT'">
+    <SimboxEnginePath>
+      ..\..\..\simbox-engine\bin\release
+    </SimboxEnginePath>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Nano">
+    <Reference Include="Nano" Condition="'$(OS)' == 'Windows_NT'">
       <HintPath>$(AppData)\itch\apps\NSB Research VR\server\Nano.dll</HintPath>
     </Reference>
-    <Reference Include="Nano.Science.Simulation">
+    <Reference Include="Nano.Science.Simulation" Condition="'$(OS)' == 'Windows_NT'">
       <HintPath>$(AppData)\itch\apps\NSB Research VR\server\Nano.Science.Simulation.dll</HintPath>
     </Reference>
-    <Reference Include="Python.Runtime, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="Python.Runtime, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null" Condition="'$(OS)' == 'Windows_NT'">
       <HintPath>..\..\..\..\..\..\Anaconda3\pkgs\pythonnet-2.3.0-py35_0\Lib\site-packages\Python.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Simbox.MD">
+    <Reference Include="Simbox.MD" Condition="'$(OS)' == 'Windows_NT'">
       <HintPath>$(AppData)\itch\apps\NSB Research VR\server\Simbox.MD.dll</HintPath>
     </Reference>
-    <Reference Include="SlimMath">
+    <Reference Include="SlimMath" Condition="'$(OS)' == 'Windows_NT'">
       <HintPath>$(AppData)\itch\apps\NSB Research VR\server\SlimMath.dll</HintPath>
+    </Reference>
+    <Reference Include="Nano" Condition="'$(OS)' != 'Windows_NT'">
+      <HintPath>..\..\..\simbox-engine\bin\release\Nano.dll</HintPath>
+    </Reference>
+    <Reference Include="Nano.Science.Simulation" Condition="'$(OS)' != 'Windows_NT'">
+      <HintPath>..\..\..\simbox-engine\bin\release\Nano.Science.Simulation.dll</HintPath>
+    </Reference>
+    <Reference Include="Python.Runtime" Condition="'$(OS)' != 'Windows_NT'">
+      <HintPath>$(HOME)\anaconda3\lib\python3.6\site-packages\Python.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Simbox.MD" Condition="'$(OS)' != 'Windows_NT'">
+      <HintPath>..\..\..\simbox-engine\bin\release\Simbox.MD.dll</HintPath>
+    </Reference>
+    <Reference Include="SlimMath" Condition="'$(OS)' != 'Windows_NT'">
+      <HintPath>..\..\..\simbox-engine\bin\release\SlimMath.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -64,37 +89,48 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <DebugOutputFiles Include="$(OutputPath)Simbox.QML.dll" />
-    <DebugOutputFiles Include="$(OutputPath)Python.Runtime.dll" />
-    <DebugOutputFiles Include="$(OutputPath)Simbox.QML.pdb" />
+    <DebugOutputFiles Include="$(OutputPath)Simbox.QML.dll">
+      <InProject>false</InProject>
+    </DebugOutputFiles>
+    <DebugOutputFiles Include="$(OutputPath)Simbox.QML.pdb">
+      <InProject>false</InProject>
+    </DebugOutputFiles>
+    <DebugOutputFiles Include="$(OutputPath)Python.Runtime.dll">
+      <InProject>false</InProject>
+    </DebugOutputFiles> 
   </ItemGroup>
   <ItemGroup>
-    <ReleaseOutputFiles Include="$(OutputPath)Python.Runtime.dll" />
-    <ReleaseOutputFiles Include="$(OutputPath)Simbox.QML.dll" />
+    <ReleaseOutputFiles Include="$(OutputPath)Python.Runtime.dll">
+      <InProject>false</InProject>
+    </ReleaseOutputFiles>    
+    <ReleaseOutputFiles Include="$(OutputPath)Simbox.QML.dll">
+      <InProject>false</InProject>
+    </ReleaseOutputFiles>
   </ItemGroup>
   <ItemGroup>
     <QMLFiles Include="..\qml_md\**\*.*" />
+    
   </ItemGroup>
   <ItemGroup>
     <PluginManifest Include="PluginManifest.xml" />
   </ItemGroup>
   <Target Name="CopyReleaseToItch" AfterTargets="Build" Condition="'$(Configuration)'=='Release'">
-    <Copy SourceFiles="@(ReleaseOutputFiles)" DestinationFiles="$(AppData)\itch\apps\NSB Research VR\server\Plugins\Simbox.QML\Managed\%(RecursiveDir)%(Filename)%(Extension)">
+    <Copy SourceFiles="@(ReleaseOutputFiles)" DestinationFiles="$(SimboxEnginePath)\Plugins\Simbox.QML\Managed\%(RecursiveDir)%(Filename)%(Extension)">
       <Output TaskParameter="CopiedFiles" ItemName="Changed" />
     </Copy>
   </Target>
   <Target Name="CopyDebugToItch" AfterTargets="Build" Condition="'$(Configuration)'=='Debug'">
-    <Copy SourceFiles="@(DebugOutputFiles)" DestinationFiles="$(AppData)\itch\apps\NSB Research VR\server\Plugins\Simbox.QML\Managed\%(RecursiveDir)%(Filename)%(Extension)">
+    <Copy SourceFiles="@(DebugOutputFiles)" DestinationFiles="$(SimboxEnginePath)\Plugins\Simbox.QML\Managed\%(RecursiveDir)%(Filename)%(Extension)">
       <Output TaskParameter="CopiedFiles" ItemName="Changed" />
     </Copy>
   </Target>
   <Target Name="CopyQMLMDToItch" AfterTargets="Build">
-    <Copy SourceFiles="@(QMLFiles)" DestinationFiles="$(AppData)\itch\apps\NSB Research VR\server\Plugins\Simbox.QML\qml_md\%(RecursiveDir)%(Filename)%(Extension)">
+    <Copy SourceFiles="@(QMLFiles)" DestinationFiles="$(SimboxEnginePath)\Plugins\Simbox.QML\qml_md\%(RecursiveDir)%(Filename)%(Extension)">
       <Output TaskParameter="CopiedFiles" ItemName="Changed" />
     </Copy>
   </Target>
   <Target Name="CopyManifestToItch" AfterTargets="Build">
-    <Copy SourceFiles="@(PluginManifest)" DestinationFolder="$(AppData)\itch\apps\NSB Research VR\server\Plugins\Simbox.QML\">
+    <Copy SourceFiles="@(PluginManifest)" DestinationFolder="$(SimboxEnginePath)\Plugins\Simbox.QML\">
       <Output TaskParameter="CopiedFiles" ItemName="Changed" />
     </Copy>
   </Target>
