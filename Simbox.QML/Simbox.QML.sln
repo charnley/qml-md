@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simbox.QML", "Simbox.QML.csproj", "{A69E993B-C9AC-4FC3-AD01-8FAD77688190}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simbox.QML.Test", "Simbox.QML.Test\Simbox.QML.Test.csproj", "{64777DF8-8224-416B-8384-98BC9722FF50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A69E993B-C9AC-4FC3-AD01-8FAD77688190}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A69E993B-C9AC-4FC3-AD01-8FAD77688190}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A69E993B-C9AC-4FC3-AD01-8FAD77688190}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64777DF8-8224-416B-8384-98BC9722FF50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64777DF8-8224-416B-8384-98BC9722FF50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64777DF8-8224-416B-8384-98BC9722FF50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64777DF8-8224-416B-8384-98BC9722FF50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

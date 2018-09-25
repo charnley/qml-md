@@ -65,7 +65,7 @@
       <HintPath>..\..\..\simbox-engine\bin\release\Nano.Science.Simulation.dll</HintPath>
     </Reference>
     <Reference Include="Python.Runtime" Condition="'$(OS)' != 'Windows_NT'">
-      <HintPath>$(HOME)\anaconda3\lib\python3.6\site-packages\Python.Runtime.dll</HintPath>
+      <HintPath>$(HOME)\anaconda3\envs\net\lib\python3.5\site-packages\Python.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Simbox.MD" Condition="'$(OS)' != 'Windows_NT'">
       <HintPath>..\..\..\simbox-engine\bin\release\Simbox.MD.dll</HintPath>

@@ -4,6 +4,7 @@ using SlimMath;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Nano;
@@ -29,9 +30,14 @@ namespace Simbox.QML
 
         public IReporter Reporter;
         /// <inheritdoc />
-        public QMLForceField()
+        public QMLForceField(string pythonHome = "")
         {
-            LoadPyConfiguration();
+            PythonHome = pythonHome;
+            dynamic module;
+            using (Py.GIL())
+            {
+                module = Py.Import("numpy");
+            }
         }
 
         /// <inheritdoc />
@@ -55,7 +61,7 @@ namespace Simbox.QML
             Environment.SetEnvironmentVariable("PYTHONHOME", PythonHome);
             //specify the path to the qml_md python scripts.
             var applicationDir = Helper.ResolvePath("~/Plugins/QMLForceField/qml_md");
-            var pythonlibPath =  $@"{PythonHome}\DLLs;{PythonHome}\Lib;{PythonHome}\Lib\site-packages;{applicationDir}";
+            var pythonlibPath =  $@"{PythonHome}/DLLs;{PythonHome}/Lib;{PythonHome}/Lib/site-packages;{applicationDir}";
             Reporter?.PrintDetail($"Python Path: {pythonlibPath} ");
             Environment.SetEnvironmentVariable("PYTHONPATH ", pythonlibPath);
             PythonEngine.PythonHome = PythonHome;
