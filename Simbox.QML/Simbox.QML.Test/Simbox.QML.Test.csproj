@@ -44,14 +44,14 @@
       <HintPath>$(AppData)\itch\apps\NSB Research VR\server\Nano.dll</HintPath>
     </Reference>
     <Reference Include="Nano" Condition="'$(OS)' != 'Windows_NT'">
-      <HintPath>..\..\..\simbox-engine\bin\release\Nano.dll</HintPath>
+      <HintPath>..\..\..\..\simbox-engine\bin\release\Nano.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <QMLFiles Include="..\..\qml_md\**\*.*" />
   </ItemGroup>
   <Target Name="CopyQMLToOutput" AfterTargets="BeforeBuild">
-    <Copy SourceFiles="@(QMLFiles)" DestinationFiles="$(OutputDir)\Plugins\Simbox.QML\qml_md\%(RecursiveDir)%(Filename)%(Extension)">
+    <Copy SourceFiles="@(QMLFiles)" DestinationFiles="$(OutputPath)\Plugins\Simbox.QML\qml_md\%(RecursiveDir)%(Filename)%(Extension)">
     </Copy>
   </Target>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

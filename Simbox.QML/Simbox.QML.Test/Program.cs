@@ -1,4 +1,5 @@
-﻿using Simbox.QML;
+﻿using System;
+using Simbox.QML;
 
 namespace Simbox.QML.Test
 {
@@ -6,7 +7,12 @@ namespace Simbox.QML.Test
     {
         static void Main(string[] args)
         {
-            var forcefield = new QMLForceField(@"C:\Users\Mike.DESKTOP-CA70LTI\Anaconda3\envs\net");
+            string pythonPath = "";
+            if (args.Length == 1)
+            {
+                pythonPath = args[0];
+            }
+            var forcefield = new QMLForceField(pythonPath);
         }
     }
 }
