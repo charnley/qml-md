@@ -48,8 +48,8 @@
     <Reference Include="Nano.Science.Simulation" Condition="'$(OS)' == 'Windows_NT'">
       <HintPath>$(AppData)\itch\apps\NSB Research VR\server\Nano.Science.Simulation.dll</HintPath>
     </Reference>
-    <Reference Include="Python.Runtime, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null" Condition="'$(OS)' == 'Windows_NT'">
-      <HintPath>..\..\..\..\..\..\Anaconda3\pkgs\pythonnet-2.3.0-py35_0\Lib\site-packages\Python.Runtime.dll</HintPath>
+    <Reference Include="Python.Runtime">
+      <HintPath>..\..\..\AppData\Local\conda\conda\envs\net\Lib\site-packages\Python.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Simbox.MD" Condition="'$(OS)' == 'Windows_NT'">
       <HintPath>$(AppData)\itch\apps\NSB Research VR\server\Simbox.MD.dll</HintPath>
@@ -57,7 +57,6 @@
     <Reference Include="SlimMath" Condition="'$(OS)' == 'Windows_NT'">
       <HintPath>$(AppData)\itch\apps\NSB Research VR\server\SlimMath.dll</HintPath>
     </Reference>
-
     <Reference Include="Nano.Science.Simulation" Condition="'$(OS)' != 'Windows_NT'">
       <HintPath>..\..\..\simbox-engine\bin\release\Nano.Science.Simulation.dll</HintPath>
     </Reference>
@@ -94,19 +93,18 @@
     </DebugOutputFiles>
     <DebugOutputFiles Include="$(OutputPath)Python.Runtime.dll">
       <InProject>false</InProject>
-    </DebugOutputFiles> 
+    </DebugOutputFiles>
   </ItemGroup>
   <ItemGroup>
     <ReleaseOutputFiles Include="$(OutputPath)Python.Runtime.dll">
       <InProject>false</InProject>
-    </ReleaseOutputFiles>    
+    </ReleaseOutputFiles>
     <ReleaseOutputFiles Include="$(OutputPath)Simbox.QML.dll">
       <InProject>false</InProject>
     </ReleaseOutputFiles>
   </ItemGroup>
   <ItemGroup>
     <QMLFiles Include="..\qml_md\**\*.*" />
-    
   </ItemGroup>
   <ItemGroup>
     <PluginManifest Include="PluginManifest.xml" />

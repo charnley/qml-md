@@ -104,3 +104,9 @@ venv.bak/
 .mypy_cache/
 
 Simbox\.QML/\.idea/\.idea\.Simbox\.QML/
+
+Simbox\.QML/My Advisor Results - Simbox\.QML/
+
+Simbox\.QML/Simbox\.QML\.Test/My Advisor Results - Simbox\.QML\.Test/
+
+*.user
