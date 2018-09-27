@@ -21,7 +21,8 @@ namespace Simbox.QML.Load
     class QMLForceFieldTerms : IForceFieldTerms, IInstantiatedForceFieldTerms
     {
         private string pythonHome;
-        
+
+        private string modelPath; 
 
         /// <summary>
         /// Add this forcefield to the instantiated topology. 
@@ -45,6 +46,12 @@ namespace Simbox.QML.Load
             //TODO add representations & configurations. 
             //grab a python path, so we can specify environments.
             pythonHome = Helper.ResolvePath(Helper.GetAttributeValue(node, "PythonHome", ""));
+            modelPath = Helper.ResolvePath(Helper.GetAttributeValue(node, "ModelPath", ""));
+            if(modelPath == string.Empty)
+            {
+                context.Error("Missing field ModelPath", true);
+            }
+
         }
 
         /// <summary>
@@ -57,6 +64,7 @@ namespace Simbox.QML.Load
         {
             //TODO save any necessary information.
             Helper.AppendAttributeAndValue(element, "PythonHome", pythonHome);
+            Helper.AppendAttributeAndValue(element, "ModelPath", modelPath);
             return element;
         }
 
@@ -70,7 +78,7 @@ namespace Simbox.QML.Load
         public IForceField GenerateForceField(InstantiatedTopology parentTopology, SystemProperties properties, IReporter reporter)
         {
             //TODO do any extra stuff thats needed.
-            var forcefield = new QMLForceField(pythonHome, reporter);
+            var forcefield = new QMLForceField(modelPath, pythonHome, reporter);
             reporter.PrintEmphasized("Successfully initialised QML forcefield.");
             return forcefield;
         }

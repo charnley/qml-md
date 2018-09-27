@@ -8,11 +8,17 @@ namespace Simbox.QML.Test
         static void Main(string[] args)
         {
             string pythonPath = "";
-            if (args.Length == 1)
+            if(args.Length == 0)
             {
-                pythonPath = args[0];
+                Console.WriteLine("Usage: Simbox.QML.Test.exe modelDirectory pythonPath");
             }
-            var forcefield = new QMLForceField(pythonPath);
+            string modelPath = args[0];
+            
+            if (args.Length == 2)
+            {
+                pythonPath = args[1];
+            }
+            var forcefield = new QMLForceField(modelPath, pythonPath);
         }
     }
 }
