@@ -31,23 +31,28 @@ namespace Simbox.QML
         public string Name => "QML Force Field";
 
         public IReporter Reporter;
-
+        private string modelPath;
+        private dynamic numpy;
         private dynamic QmlPredict;
 
         private float[] positions1d;
 
-        private Element[] atomElements; 
+        private int[] atomElements;
+        private const float kJMolPerHartree = 2625.50f;
 
+        private int callCount = 0;
         /// <inheritdoc />
         public QMLForceField(string modelPath, string pythonHome = "", IReporter reporter = null)
         {
             this.Reporter = reporter;
+            this.modelPath = modelPath;
             PythonHome = pythonHome;
-            
             LoadPyConfiguration();
+            PythonEngine.Initialize();
+            PythonEngine.BeginAllowThreads();
+
 
             ImportQML();
-
             LoadFile(modelPath);
 
             reporter?.PrintEmphasized("Successfully initialized QML Forcefield.");
@@ -56,29 +61,47 @@ namespace Simbox.QML
         private void LoadFile(string modelPath)
         {
             var fullPath = Helper.ResolvePath(modelPath);
-            dynamic nmax = QmlPredict.read_model(fullPath);
-            
+            using (Py.GIL())
+            {
+                dynamic nmax = QmlPredict.read_model(fullPath);
+            }
         }
 
-        /// <inheritdoc />
-        public float CalculateForceField(IAtomicSystem system, List<Vector3> forces)
+        private void InitialiseFields(IAtomicSystem system)
         {
             if (positions1d == null)
                 positions1d = new float[system.NumberOfParticles * 3];
             if (atomElements == null)
-                atomElements = system.Topology.Elements.ToArray();
+            {
+                atomElements = new int[system.NumberOfParticles];
+                for (int i = 0; i < system.NumberOfParticles; i++)
+                {
+                    atomElements[i] = (int)system.Topology.Elements[i];
+                }
+            }
+
+
+
+        }
+        /// <inheritdoc />
+        public float CalculateForceField(IAtomicSystem system, List<Vector3> forces)
+        {
+
+            InitialiseFields(system);
+
             GetPositions(system, ref positions1d);
 
             float energy;
             using (Py.GIL())
             {
                 dynamic result = QmlPredict.calculate(atomElements, positions1d);
-                energy = result[0];
+                energy = result[0] * kJMolPerHartree;
                 dynamic pyForces = result[1];
                 CopyForces(pyForces, forces);
+                dynamic result2 = QmlPredict.calculate(atomElements, positions1d);
             }
-
-            return energy;
+            Console.WriteLine($"Energy: {energy}");
+            return energy ;
         }
 
         /// <inheritdoc />
@@ -86,6 +109,7 @@ namespace Simbox.QML
         {
             //Dispose of things here.
         }
+
 
         private void CopyForces(dynamic pyForces, List<Vector3> forces)
         {
@@ -95,7 +119,8 @@ namespace Simbox.QML
                 var vec = Vector3.Zero;
                 for (int j = 0; j < 3; j++)
                 {
-                    vec[j] = pyForces[i * 3 + j];
+                    //convert hartree / A to kJ/(mol*nm)
+                    vec[j] = pyForces[i * 3 + j] * kJMolPerHartree * Units.NmPerAngstrom;
                 }
 
                 forces[i] += vec;
@@ -148,7 +173,7 @@ namespace Simbox.QML
                 dynamic sys = Py.Import("sys");
                 sys.path.append(qmlDir);
 
-
+                numpy = Py.Import("numpy");
                 QmlPredict = Py.Import("qml_md.predict");
             }
 

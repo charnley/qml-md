@@ -96,7 +96,7 @@ def read_model(filepath):
 
 
 	
-def calculate(charges, coordinates):
+def calculate(charges_mike, coordinates_mike):
 
 	global train_representations
 	global train_displaced_representations
@@ -106,9 +106,35 @@ def calculate(charges, coordinates):
 	global CUT_DISTANCE
 	global KERNEL_ARGS
 	global DX
-
+	
+	print("before")
+	
+	print("mike charge", charges_mike)
+	print("mike coord", coordinates_mike)
+	print("mike lr", len(charges_mike))
+	print("mike lo", len(coordinates_mike))
 	#charges = [NUCLEAR_CHARGE[atom] for atom in atoms]
 	#charges = np.array(charges)
+	
+	N = len(charges_mike)
+	
+	coordinates = np.zeros(N*3)
+	charges = np.zeros(N, dtype=int)
+	
+	for i, coord in enumerate(coordinates_mike):
+		coordinates[i] = coord
+	
+	for i, charge in enumerate(charges_mike):
+		charges[i] = charge
+	
+	
+	coordinates = coordinates.reshape((N,3))
+	
+	print("charges", charges)
+	print("coord", coordinates)
+	print("len charge", len(charges))
+	print("len coord", len(coordinates))
+
 	
 	rep = generate_representation(coordinates, charges, max_size=NMAX, cut_distance=CUT_DISTANCE)
 	disp_rep = generate_displaced_representations(coordinates, charges, max_size=NMAX, cut_distance=CUT_DISTANCE, dx=DX)
@@ -126,11 +152,14 @@ def calculate(charges, coordinates):
 	kernel_energies = kernel_energies[0]
 	kernel_forces = kernel_forces[0]
 
-	print(kernel_forces.shape)
+	print("kernel shape", kernel_forces.shape)
 	
 	# predict
 	energies = np.dot(kernel_energies.T, train_alphas)
 	forces = np.dot(kernel_forces.T, train_alphas)
+	
+	print("after")
+	print(energies[0], forces)
 	
 	return energies[0], forces
 
