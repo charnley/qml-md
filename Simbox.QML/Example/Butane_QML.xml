@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Simulation Name="Butane QML">
+  <!-- Define the System Properties analogously to SystemProperties.cs-->
+  <SystemProperties>
+    <SimulationBoundary SimulationBox="2, 2, 2" MinimumBoxVolume="8" />
+    <Thermostat Type="BerendsenThermostat" EquilibriumTemperature="30" MaximumTemperature="10000" BerendsenCoupling="0.001" />
+    <Integrator Type="VelocityVerlet" TimeStep="0.001" />
+	<Logging>
+	     <Logger LogPath="~/Logs/Butane_QML" Type="XYZ" Positions="true" Velocities="true" Forces="true" WriteFrequency="1"/>
+	</Logging>
+	
+  </SystemProperties>
+
+  <Topology>
+    <Templates>
+      <Residue Name="ButaneQML">
+		<File Path="~/butane.xyz" />
+		<ForceFields>
+			<QMLForceField ModelPath="~/Plugins/Simbox.QML/qml_md/data/butane" PythonHome="C:\Users\simbox-developer\AppData\Local\conda\conda\envs\net"/>
+		</ForceFields>
+	  </Residue> 
+	  
+    </Templates>
+    <DynamicBonds BondLength="0.15"/>
+  </Topology>
+</Simulation>
