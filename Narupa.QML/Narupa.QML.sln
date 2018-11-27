@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simbox.QML", "Simbox.QML.csproj", "{A69E993B-C9AC-4FC3-AD01-8FAD77688190}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Narupa.QML", "Narupa.QML.csproj", "{A69E993B-C9AC-4FC3-AD01-8FAD77688190}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simbox.QML.Test", "Simbox.QML.Test\Simbox.QML.Test.csproj", "{64777DF8-8224-416B-8384-98BC9722FF50}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Narupa.QML.Test", "Narupa.QML.Test\Narupa.QML.Test.csproj", "{64777DF8-8224-416B-8384-98BC9722FF50}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

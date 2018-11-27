@@ -8,8 +8,8 @@
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Simbox.QML.Test</RootNamespace>
-    <AssemblyName>Simbox.QML.Test</AssemblyName>
+    <RootNamespace>Narupa.QML.Test</RootNamespace>
+    <AssemblyName>Narupa.QML.Test</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -36,22 +36,21 @@
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Simbox.QML.csproj">
-      <Project>{a69e993b-c9ac-4fc3-ad01-8fad77688190}</Project>
-      <Name>Simbox.QML</Name>
-    </ProjectReference>
-    <Reference Include="Nano" Condition="'$(OS)' == 'Windows_NT'">
-      <HintPath>$(AppData)\itch\apps\NSB Research VR\server\Nano.dll</HintPath>
-    </Reference>
-    <Reference Include="Nano" Condition="'$(OS)' != 'Windows_NT'">
-      <HintPath>..\..\..\..\simbox-engine\bin\release\Nano.dll</HintPath>
+    <Reference Include="Nano, Version=1.1.3.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\..\narupa-server\bin\release\Nano.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <QMLFiles Include="..\..\qml_md\**\*.*" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Narupa.QML.csproj">
+      <Project>{a69e993b-c9ac-4fc3-ad01-8fad77688190}</Project>
+      <Name>Narupa.QML</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Target Name="CopyQMLToOutput" AfterTargets="BeforeBuild">
-    <Copy SourceFiles="@(QMLFiles)" DestinationFiles="$(OutputPath)\Plugins\Simbox.QML\qml_md\%(RecursiveDir)%(Filename)%(Extension)">
+    <Copy SourceFiles="@(QMLFiles)" DestinationFiles="$(OutputPath)\Plugins\Narupa.QML\qml_md\%(RecursiveDir)%(Filename)%(Extension)">
     </Copy>
   </Target>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

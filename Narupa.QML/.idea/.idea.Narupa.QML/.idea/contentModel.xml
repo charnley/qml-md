@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Mike.DESKTOP-CA70LTI\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Mike.DESKTOP-CA70LTI\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_Narupa.QML.1979788762.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Mike.DESKTOP-CA70LTI\Code\glowacki-group\plugins\qml-md\Narupa.QML" t="IncludeRecursive">
+      <e p="bin" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="Narupa.QML.dll" t="Include" />
+          <e p="Narupa.QML.pdb" t="Include" />
+          <e p="Python.Runtime.dll" t="Include" />
+        </e>
+      </e>
+      <e p="Load" t="Include">
+        <e p="QMLForceFieldTerms.cs" t="Include" />
+      </e>
+      <e p="Narupa.QML.csproj" t="IncludeRecursive" />
+      <e p="Narupa.QML.sln" t="IncludeFlat" />
+      <e p="Narupa.QML.Test" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Narupa.QML.Test.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Program.cs" t="Include" />
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="PluginManifest.xml" t="Include" />
+      <e p="Properties" t="Include">
+        <e p="AssemblyInfo.cs" t="Include" />
+      </e>
+      <e p="QMLForceField.cs" t="Include" />
+    </e>
+    <e p="C:\Users\Mike.DESKTOP-CA70LTI\Code\glowacki-group\plugins\qml-md\qml_md" t="Include">
+      <e p="__init__.py" t="Include" />
+      <e p="conformations.py" t="Include" />
+      <e p="data" t="Include">
+        <e p="butane" t="Include">
+          <e p="butane-0.com" t="Include" />
+          <e p="butane-0.energy" t="Include" />
+          <e p="butane-0.out" t="Include" />
+          <e p="butane-0.xyz" t="Include" />
+          <e p="butane-1.com" t="Include" />
+          <e p="butane-1.energy" t="Include" />
+          <e p="butane-1.out" t="Include" />
+          <e p="butane-1.xyz" t="Include" />
+          <e p="butane-2.com" t="Include" />
+          <e p="butane-2.energy" t="Include" />
+          <e p="butane-2.out" t="Include" />
+          <e p="butane-2.xyz" t="Include" />
+          <e p="butane-3.com" t="Include" />
+          <e p="butane-3.energy" t="Include" />
+          <e p="butane-3.out" t="Include" />
+          <e p="butane-3.xyz" t="Include" />
+          <e p="butane-4.com" t="Include" />
+          <e p="butane-4.energy" t="Include" />
+          <e p="butane-4.out" t="Include" />
+          <e p="butane-4.xyz" t="Include" />
+          <e p="butane-5.com" t="Include" />
+          <e p="butane-5.energy" t="Include" />
+          <e p="butane-5.out" t="Include" />
+          <e p="butane-5.xyz" t="Include" />
+          <e p="butane-6.com" t="Include" />
+          <e p="butane-6.energy" t="Include" />
+          <e p="butane-6.out" t="Include" />
+          <e p="butane-6.xyz" t="Include" />
+          <e p="butane-7.com" t="Include" />
+          <e p="butane-7.energy" t="Include" />
+          <e p="butane-7.out" t="Include" />
+          <e p="butane-7.xyz" t="Include" />
+          <e p="butane-8.com" t="Include" />
+          <e p="butane-8.energy" t="Include" />
+          <e p="butane-8.out" t="Include" />
+          <e p="butane-8.xyz" t="Include" />
+          <e p="butane-9.com" t="Include" />
+          <e p="butane-9.energy" t="Include" />
+          <e p="butane-9.out" t="Include" />
+          <e p="butane-9.xyz" t="Include" />
+          <e p="correlation.png" t="Include" />
+          <e p="molecules" t="Include" />
+        </e>
+        <e p="butane.alphas.npy" t="Include" />
+        <e p="butane.displaced_representations.npy" t="Include" />
+        <e p="butane.parameters.npy" t="Include" />
+        <e p="butane.representations.npy" t="Include" />
+      </e>
+      <e p="predict.py" t="Include" />
+      <e p="read_forces.py" t="Include" />
+      <e p="train.py" t="Include" />
+      <e p="wrapper.py" t="Include" />
+    </e>
+  </component>
+</project>

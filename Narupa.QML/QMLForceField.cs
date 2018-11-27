@@ -1,18 +1,12 @@
-﻿using Nano.Science.Simulation;
+﻿using System;
+using System.Collections.Generic;
+using Nano;
+using Nano.Science;
+using Nano.Science.Simulation;
 using Nano.Science.Simulation.ForceField;
 using SlimMath;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using Nano;
-using Python.Runtime;
-using Simbox.MD;
-using Nano.Science;
 
-namespace Simbox.QML
+namespace Narupa.QML
 {
     /// <summary>
     /// A forcefield interface to the QML package.
@@ -149,12 +143,12 @@ namespace Simbox.QML
                 //set up the python variables.
                 var pyPath = $@"{PythonHome};" + Environment.GetEnvironmentVariable("PATH");
                 //TODO these are all the paths that conda activate sets. We should extract these with a script deal with this properly! ExtractCondaEnvironment.
-                var condaPath = @"C:\Users\simbox-developer\AppData\Local\conda\conda\envs\net;C:\Users\simbox-developer\AppData\Local\conda\conda\envs\net\Library\mingw-w64\bin;C:\Users\simbox-developer\AppData\Local\conda\conda\envs\net\Library\usr\bin;C:\Users\simbox-developer\AppData\Local\conda\conda\envs\net\Library\bin;C:\Users\simbox-developer\AppData\Local\conda\conda\envs\net\Scripts;C:\Users\simbox-developer\AppData\Local\conda\conda\envs\net\bin;C:\ProgramData\Anaconda3;C:\ProgramData\Anaconda3\Library\mingw-w64\bin;C:\ProgramData\Anaconda3\Library\usr\bin;C:\ProgramData\Anaconda3\Library\bin;C:\ProgramData\Anaconda3\Scripts;C:\ProgramData\Anaconda3\bin";
+                var condaPath = @"C:\Users\narupa-developer\AppData\Local\conda\conda\envs\net;C:\Users\narupa-developer\AppData\Local\conda\conda\envs\net\Library\mingw-w64\bin;C:\Users\narupa-developer\AppData\Local\conda\conda\envs\net\Library\usr\bin;C:\Users\narupa-developer\AppData\Local\conda\conda\envs\net\Library\bin;C:\Users\narupa-developer\AppData\Local\conda\conda\envs\net\Scripts;C:\Users\narupa-developer\AppData\Local\conda\conda\envs\net\bin;C:\ProgramData\Anaconda3;C:\ProgramData\Anaconda3\Library\mingw-w64\bin;C:\ProgramData\Anaconda3\Library\usr\bin;C:\ProgramData\Anaconda3\Library\bin;C:\ProgramData\Anaconda3\Scripts;C:\ProgramData\Anaconda3\bin";
                 condaPath = condaPath + ";" + Environment.GetEnvironmentVariable("PATH");
                 Environment.SetEnvironmentVariable("PATH", condaPath);
                 Environment.SetEnvironmentVariable("PYTHONHOME", PythonHome);
                 PythonEngine.PythonHome = PythonHome;
-                //PythonEngine.PythonPath = $@"{PythonHome};{PythonHome}\DLLs;{PythonHome}\Lib;{PythonHome}\Lib\site-packages;C:\Users\simbox-developer\AppData\Roaming\Python\Python35\site-packages'";
+                //PythonEngine.PythonPath = $@"{PythonHome};{PythonHome}\DLLs;{PythonHome}\Lib;{PythonHome}\Lib\site-packages;C:\Users\narupa-developer\AppData\Roaming\Python\Python35\site-packages'";
             }
             else 
             {
@@ -167,7 +161,7 @@ namespace Simbox.QML
         private void ImportQML()
         {
             //specify the path to the qml_md python scripts.
-            var qmlDir = Helper.ResolvePath("~/Plugins/Simbox.QML/");
+            var qmlDir = Helper.ResolvePath("~/Plugins/Narupa.QML/");
             using(Py.GIL())
             {
                 dynamic sys = Py.Import("sys");

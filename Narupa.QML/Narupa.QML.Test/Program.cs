@@ -1,7 +1,6 @@
 ﻿using System;
-using Simbox.QML;
 
-namespace Simbox.QML.Test
+namespace Narupa.QML.Test
 {
     public class Program
     {
@@ -10,7 +9,7 @@ namespace Simbox.QML.Test
             string pythonPath = "";
             if(args.Length == 0)
             {
-                Console.WriteLine("Usage: Simbox.QML.Test.exe modelDirectory pythonPath");
+                Console.WriteLine("Usage: Narupa.QML.Test.exe modelDirectory pythonPath");
             }
             string modelPath = args[0];
             

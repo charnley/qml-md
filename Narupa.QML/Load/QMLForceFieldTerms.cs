@@ -1,18 +1,13 @@
-﻿using Nano.Loading;
+﻿using System.Xml;
+using Nano;
+using Nano.Loading;
+using Nano.Science.Simulation;
 using Nano.Science.Simulation.ForceField;
 using Nano.Science.Simulation.Instantiated;
 using Nano.Science.Simulation.Residues;
 using Nano.Science.Simulation.Spawning;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using Nano;
-using Nano.Science.Simulation;
 
-namespace Simbox.QML.Load
+namespace Narupa.QML.Load
 {
     /// <summary>
     /// Represents the QML forcefield terms for a given <see cref="Residue"/>. 
